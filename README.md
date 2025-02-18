@@ -1,1 +1,1 @@
-Small project for learning Clean Architecture with reach domain models
+Small project for learning Clean Architecture with rich domain models
