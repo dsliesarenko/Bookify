@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Application", "Book
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Infrastructure", "Bookify.Infrastructure\Bookify.Infrastructure.csproj", "{3ACBB8AC-F888-4E26-9362-FC0292DF5F6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Api", "Bookify.Api\Bookify.Api.csproj", "{35BE2620-114B-4570-AACF-D7B68542F715}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{95CA5117-8EBB-4DB8-B452-94CBBF4D5664}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{3ACBB8AC-F888-4E26-9362-FC0292DF5F6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ACBB8AC-F888-4E26-9362-FC0292DF5F6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ACBB8AC-F888-4E26-9362-FC0292DF5F6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35BE2620-114B-4570-AACF-D7B68542F715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35BE2620-114B-4570-AACF-D7B68542F715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35BE2620-114B-4570-AACF-D7B68542F715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35BE2620-114B-4570-AACF-D7B68542F715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95CA5117-8EBB-4DB8-B452-94CBBF4D5664}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95CA5117-8EBB-4DB8-B452-94CBBF4D5664}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95CA5117-8EBB-4DB8-B452-94CBBF4D5664}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95CA5117-8EBB-4DB8-B452-94CBBF4D5664}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +51,6 @@ Global
 		{9EDB4BE0-9813-4A86-94DB-0377B686BA4D} = {EEF57D52-D15C-433D-917F-F3C09A8450FB}
 		{8888D454-61DA-45FF-A28F-B23DEC1E18FE} = {EEF57D52-D15C-433D-917F-F3C09A8450FB}
 		{3ACBB8AC-F888-4E26-9362-FC0292DF5F6A} = {EEF57D52-D15C-433D-917F-F3C09A8450FB}
+		{35BE2620-114B-4570-AACF-D7B68542F715} = {EEF57D52-D15C-433D-917F-F3C09A8450FB}
 	EndGlobalSection
 EndGlobal
