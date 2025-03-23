@@ -5,12 +5,14 @@ namespace Bookify.Domain.Users
 {
     public sealed class User : Entity
     {
-        public User(Guid id, FirstName firstName, LastName lastName, Email email) : base (id)
+        private User(Guid id, FirstName firstName, LastName lastName, Email email) : base (id)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
         }
+
+        private User() { }
 
         public FirstName FirstName { get; private set; }
 

@@ -3,26 +3,25 @@ using Bookify.Domain.Bookings;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Bookify.Application
+namespace Bookify.Application;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddApplication(this IServiceCollection services)
     {
-        public static IServiceCollection AddApplication(this IServiceCollection services)
+        services.AddMediatR(configuration =>
         {
-            services.AddMediatR(configuration =>
-            {
-                configuration.RegisterServicesFromAssemblies(typeof(DependencyInjection).Assembly);
+            configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
 
-                configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+            configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
 
-                configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
-            });
+            configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
+        });
 
-            services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
+        services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
-            services.AddTransient<PricingService>();
+        services.AddTransient<PricingService>();
 
-            return services;
-        }
+        return services;
     }
 }
