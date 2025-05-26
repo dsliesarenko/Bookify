@@ -1,4 +1,5 @@
-﻿using Bookify.Application.Abstractions.Authentication;
+﻿using Asp.Versioning;
+using Bookify.Application.Abstractions.Authentication;
 using Bookify.Application.Abstractions.Caching;
 using Bookify.Application.Abstractions.Clock;
 using Bookify.Application.Abstractions.Data;
@@ -6,6 +7,7 @@ using Bookify.Application.Abstractions.Email;
 using Bookify.Domain.Abstractions;
 using Bookify.Domain.Apartments;
 using Bookify.Domain.Bookings;
+using Bookify.Domain.Reviews;
 using Bookify.Domain.Users;
 using Bookify.Infrastructure.Authentication;
 using Bookify.Infrastructure.Authorization;
@@ -46,6 +48,8 @@ public static class DependencyInjection
 
         AddHealthChecks(services, configuration);
 
+        AddApiVersioning(services);
+
         return services;
     }
 
@@ -63,6 +67,8 @@ public static class DependencyInjection
         services.AddScoped<IApartmentRepository, ApartmentRepository>();
 
         services.AddScoped<IBookingRepository, BookingRepository>();
+
+        services.AddScoped<IReviewRepository, ReviewRepository>();
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
@@ -130,5 +136,22 @@ public static class DependencyInjection
             .AddNpgSql(configuration.GetConnectionString("Database")!)
             .AddRedis(configuration.GetConnectionString("Cache")!)
             .AddUrlGroup(new Uri(configuration["KeyCloak:BaseUrl"]!), HttpMethod.Get, "keycloak");
+    }
+
+    private static void AddApiVersioning(IServiceCollection services)
+    {
+        services
+            .AddApiVersioning(options =>
+            {
+                options.DefaultApiVersion = new ApiVersion(1);
+                options.ReportApiVersions = true;
+                options.ApiVersionReader = new UrlSegmentApiVersionReader();
+            })
+            .AddMvc()
+            .AddApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'V";
+                options.SubstituteApiVersionInUrl = true;
+            });
     }
 }
